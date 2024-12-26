@@ -5,15 +5,18 @@ import {GETActionRequest} from './todos/todo-state/todo.action';
 import {todoSelector} from './todos/todo-state/todo.selector';
 import {Observable} from 'rxjs';
 import {Todo} from './todos/entity/todo.interface';
+import {AsyncPipe, JsonPipe} from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  standalone: true,
+  imports: [AsyncPipe, JsonPipe],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  providers: [
+
+  ]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'untitled1';
   public todos$!: Observable<Todo[]>
 
@@ -23,8 +26,8 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.todos$ = this._store.select(todoSelector);
-    this.todos$.subscribe(console.log)
+    // this.todos$ = this._store.select(todoSelector);
+    // this.todos$.subscribe(console.log)
   }
 
 
@@ -44,5 +47,4 @@ export class AppComponent implements OnInit{
 
   }
 
-  protected readonly todoSelector = todoSelector;
 }

@@ -1,5 +1,4 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 import {provideZoneChangeDetection} from '@angular/core';
 import {provideRouter} from '@angular/router';
@@ -18,7 +17,7 @@ bootstrapApplication(AppComponent, {
     }),
     provideZoneChangeDetection({eventCoalescing: true}),
     provideRouter(routes),
-    provideStore(appReducers),
+    provideStore(appReducers, {metaReducers}),
     provideStoreDevtools({maxAge: 25}),
     provideEffects([TodoEffect]),
     provideHttpClient()
