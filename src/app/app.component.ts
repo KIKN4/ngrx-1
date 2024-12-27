@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {todoSelector} from './todos/todo-state/todo.selector';
 import {Observable} from 'rxjs';
-import {ActionModel, Todo, TodoItem} from './todos/entity/todo.interface';
+import {TodoItem} from '../store/todo-state/entity/todo.interface';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {TodoActions} from './todos/todo-state/todo.action';
+import {TodoActions} from '../store/todo-state/todo.action';
 import {AsyncPipe, JsonPipe} from '@angular/common';
+import {ActionModel} from '../store/todo-state/entity/todo.enum';
 
 @Component({
   selector: 'app-root',
@@ -50,7 +50,6 @@ export class AppComponent implements OnInit {
 
 
   delete() {
-
   }
 
   protected readonly ActionModel = ActionModel;

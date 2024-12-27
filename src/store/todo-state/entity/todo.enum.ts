@@ -8,3 +8,10 @@ export  enum TodoEnum {
   DELETE_REQUEST = '[DELETE REQUEST] Todos',
   DELETE_RESPONSE = '[DELETE RESPONSE] Todos',
 }
+
+
+
+export enum ActionModel {
+  POST = 'POST',
+  PUT = 'PUT',
+}

@@ -1,9 +1,9 @@
-import {Action, ActionCreator, createAction, props} from '@ngrx/store';
-import {TodoEnum} from '../entity/todo.enum';
-import {Todo, TodoItem} from '../entity/todo.interface';
+import {ActionCreator, createAction, props} from '@ngrx/store';
+import {TodoEnum} from './entity/todo.enum';
+import {Todo, TodoItem} from './entity/todo.interface';
 
 
-const getRequest: ActionCreator<string, any>=
+const getRequest: ActionCreator<string, any> =
   createAction(TodoEnum.GET_REQUEST)
 
 const getResponse: ActionCreator<string, any> =

@@ -5,7 +5,6 @@ export interface Todo {
   completed: boolean;
 }
 
-
 export interface TodoItem {
   title: string;
   body: string,
@@ -13,8 +12,15 @@ export interface TodoItem {
   id?: number,
 }
 
+export interface TodoState {
+  list: TodoItem[] | [];
+}
 
-export enum ActionModel {
-  POST = 'POST',
-  PUT = 'PUT',
+
+export const todoInitialState: TodoState = {
+  list: [{
+    title: 'string',
+    body: 'string',
+    userId: 2,
+  }]
 }

@@ -5,8 +5,8 @@ import {routes} from './app.routes';
 import {provideStore} from '@ngrx/store';
 import {provideStoreDevtools} from '@ngrx/store-devtools';
 import {provideEffects} from '@ngrx/effects';
-import {TodoEffect} from './todos/todo-state/todo.effect';
-import {appReducers, metaReducers} from '../store/app.reducer';
+import {TodoEffect} from '../store/todo-state/todo.effect';
+import {appReducers, metaReducers} from '../store/app-state/app.reducer';
 import {provideHttpClient} from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {

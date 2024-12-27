@@ -1,7 +1,7 @@
 import {ActionReducer, INIT} from '@ngrx/store';
-import {TodoState} from './state';
+import {InitialState} from './state';
 
-export const hydrationMetaReducer = (reducer: ActionReducer<TodoState>): ActionReducer<TodoState> => {
+export const hydrationMetaReducer = (reducer: ActionReducer<InitialState>): ActionReducer<InitialState> => {
   return (state, action) => {
     if (action.type === INIT) {
       const storageValue = localStorage.getItem("state");

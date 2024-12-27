@@ -4,10 +4,10 @@ import {provideZoneChangeDetection} from '@angular/core';
 import {provideRouter} from '@angular/router';
 import {routes} from './app/app.routes';
 import {provideStore} from '@ngrx/store';
-import {appReducers, metaReducers} from './store/app.reducer';
+import {appReducers, metaReducers} from './store/app-state/app.reducer';
 import {provideStoreDevtools} from '@ngrx/store-devtools';
 import {provideEffects} from '@ngrx/effects';
-import {TodoEffect} from './app/todos/todo-state/todo.effect';
+import {TodoEffect} from './store/todo-state/todo.effect';
 import {provideHttpClient} from '@angular/common/http';
 
 bootstrapApplication(AppComponent, {
