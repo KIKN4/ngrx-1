@@ -1,10 +1,9 @@
 import {inject, Injectable} from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
-import { catchError, EMPTY, map, mergeMap } from 'rxjs';
-import { TodosService } from '../../services/todos.service';
-import { GETActionRequest, GETActionResponse } from './todo.action';
-import { Todo } from '../entity/todo.interface';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
+import {map, mergeMap} from 'rxjs';
+import {TodosService} from '../../services/todos.service';
+import {Todo, TodoItem} from '../entity/todo.interface';
+import {TodoActions} from './todo.action';
 
 @Injectable()
 export class TodoEffect {
@@ -13,10 +12,21 @@ export class TodoEffect {
 
   getRequest$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(GETActionRequest),
+      ofType(TodoActions.getRequest),
       mergeMap(() =>
         this.todosService.get().pipe(
-          map((todos: Todo[]) => GETActionResponse({ todos })),
+          map((list: Todo[]) => TodoActions.getResponse({list})),
+        )
+      )
+    )
+  );
+
+  postRequest$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TodoActions.postRequest),
+      mergeMap((body: TodoItem) =>
+        this.todosService.post(body).pipe(
+          map((body: TodoItem) => TodoActions.postResponse({body})),
         )
       )
     )

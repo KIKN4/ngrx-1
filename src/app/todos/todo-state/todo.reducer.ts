@@ -1,25 +1,25 @@
 import {createReducer, on} from '@ngrx/store';
 import {initialState} from '../../../store/state';
-import {DeleteActionResponse, GETActionResponse, PostActionSuccess, PutActionResponse} from './todo.action';
+import {TodoActions} from './todo.action';
 
 export const TodoReducer =
   createReducer(
     initialState,
     on(
-      GETActionResponse,
-      (state, {todos}) => ({...state, todos})
+      TodoActions.getResponse,
+      (state, {list}) => ({...state, list})
     ),
     on(
-      PostActionSuccess,
+      TodoActions.postResponse,
       (state, {body}) => ({...state, body})
     ),
     on(
-      PutActionResponse,
+      TodoActions.putResponse,
       (state, {body}) => ({...state, body})
     ),
 
     on(
-      DeleteActionResponse,
+      TodoActions.deleteResponse,
       (state, {id}) => ({...state, id})
     ),
   )

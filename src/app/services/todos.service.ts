@@ -17,7 +17,7 @@ export class TodosService {
 
   get(): Observable<Todo[]> {
     return this.http.get<Todo[]>(`${this.API_URL}/todos`).pipe(
-      map(todos => todos || [])  // Handle null/undefined by returning empty array
+      map(todos => todos || [])
     );
   }
 

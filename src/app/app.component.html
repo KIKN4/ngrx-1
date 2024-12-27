@@ -1,8 +1,26 @@
-<button (click)="get()">Get</button>
-<button (click)="post()">Post</button>
-<button (click)="put()">put</button>
-<button (click)="delete()">Delete</button>
+<form [formGroup]="todoForm">
+  <!-- Title -->
+  <label for="title">Title:</label>
+  <input id="title" formControlName="title" type="text" placeholder="Enter title" />
+  <br />
 
+  <!-- Body -->
+  <label for="body">Body:</label>
+  <input id="body" formControlName="body" placeholder="Enter body">
+  <br />
 
+  <!-- User ID -->
+  <label for="userId">User ID:</label>
+  <input id="userId" formControlName="userId" type="number" placeholder="Enter user ID" />
+  <br />
 
-{{todos$ | async | json}}
+  <!-- ID (Optional for PUT operations) -->
+  <label for="id">ID (optional for PUT):</label>
+  <input id="id" formControlName="id" type="number" placeholder="Enter ID" />
+  <br />
+
+  <!-- Buttons -->
+  <button type="button" (click)="handleOperation(ActionModel.POST)">POST</button>
+  <button type="button" (click)="handleOperation(ActionModel.PUT)">PUT</button>
+</form>
+

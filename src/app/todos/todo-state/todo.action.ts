@@ -1,28 +1,52 @@
-import {createAction, props} from '@ngrx/store';
+import {Action, ActionCreator, createAction, props} from '@ngrx/store';
 import {TodoEnum} from '../entity/todo.enum';
 import {Todo, TodoItem} from '../entity/todo.interface';
 
-export const GETActionRequest =
+
+const getRequest: ActionCreator<string, any>=
   createAction(TodoEnum.GET_REQUEST)
 
-export const GETActionResponse =
-  createAction(TodoEnum.GET_RESPONSE, props<{ todos: Todo[] | []}>())
+const getResponse: ActionCreator<string, any> =
+  createAction(TodoEnum.GET_RESPONSE, props<{ list: Todo[] | [] }>())
 
-export const PostActionRequest =
-  createAction(TodoEnum.POST, props<{ body: TodoItem }>())
+const postRequest: ActionCreator<string, any> =
+  createAction(TodoEnum.POST_REQUEST, props<{ body: TodoItem }>())
 
-export const PostActionSuccess =
-  createAction(TodoEnum.POST, props<{ body: TodoItem }>())
+const postResponse: ActionCreator<string, any> =
+  createAction(TodoEnum.POST_RESPONSE, props<{ body: TodoItem }>());
 
-export const PutActionRequest =
-  createAction(TodoEnum.PUT, props<{ body: TodoItem }>())
+const putRequest: ActionCreator<string, any> =
+  createAction(TodoEnum.PUT_REQUEST, props<{ body: TodoItem }>())
 
-export const PutActionResponse =
-  createAction(TodoEnum.PUT, props<{ body: TodoItem }>())
+const putResponse: ActionCreator<string, any> =
+  createAction(TodoEnum.PUT_RESPONSE, props<{ body: TodoItem }>())
 
-export const DeleteActionRequest =
-  createAction(TodoEnum.DELETE, props<{ id: number }>())
+const deleteRequest: ActionCreator<string, any> =
+  createAction(TodoEnum.DELETE_REQUEST, props<{ id: number }>())
 
-export const DeleteActionResponse =
-  createAction(TodoEnum.DELETE, props<{ id: number }>())
+const deleteResponse: ActionCreator<string, any> =
+  createAction(TodoEnum.DELETE_RESPONSE, props<{ id: number }>())
 
+
+type TodoActionsTypes = {
+  getRequest: typeof getRequest,
+  getResponse: typeof getResponse,
+  postRequest: typeof postRequest,
+  postResponse: typeof postResponse,
+  putRequest: typeof putRequest,
+  putResponse: typeof putResponse,
+  deleteRequest: typeof deleteRequest,
+  deleteResponse: typeof deleteResponse,
+}
+
+
+export const TodoActions: TodoActionsTypes = {
+  getRequest,
+  getResponse,
+  postRequest,
+  postResponse,
+  putRequest,
+  putResponse,
+  deleteRequest,
+  deleteResponse,
+};

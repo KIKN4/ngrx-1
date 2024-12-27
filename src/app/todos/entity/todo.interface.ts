@@ -12,3 +12,9 @@ export interface TodoItem {
   userId: number,
   id?: number,
 }
+
+
+export enum ActionModel {
+  POST = 'POST',
+  PUT = 'PUT',
+}
