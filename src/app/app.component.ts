@@ -5,17 +5,18 @@ import {Observable} from 'rxjs';
 import {ActionModel, Todo, TodoItem} from './todos/entity/todo.interface';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TodoActions} from './todos/todo-state/todo.action';
+import {AsyncPipe, JsonPipe} from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, AsyncPipe, JsonPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: []
 })
 export class AppComponent implements OnInit {
   title = 'untitled1';
-  public todos$!: Observable<Todo[]>;
+  public todos$!: Observable<TodoItem | {}>;
 
   todoForm!: FormGroup;
 
@@ -26,12 +27,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.todos$ = this._store.select(todoSelector);
-    this.todos$.subscribe(console.log)
+
     this.todoForm = this._fb.group({
-      title: ['', Validators.required],
-      body: ['', Validators.required],
-      userId: [null, Validators.required],
+      title: ['1', Validators.required],
+      body: ['1', Validators.required],
+      userId: [1, Validators.required],
       id: [null],
     });
   }
@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
     const body: TodoItem = this.todoForm.value;
 
     if (operation === 'PUT') this._store.dispatch(TodoActions.putRequest({body}))
-    else if (operation === 'POST') this._store.dispatch(TodoActions.postRequest({body}))
+    else if (operation === 'POST') this._store.dispatch(TodoActions.postRequest({...body}))
   }
 
 
@@ -48,13 +48,6 @@ export class AppComponent implements OnInit {
     this._store.dispatch(TodoActions.getRequest())
   }
 
-  post() {
-
-  }
-
-  put() {
-
-  }
 
   delete() {
 

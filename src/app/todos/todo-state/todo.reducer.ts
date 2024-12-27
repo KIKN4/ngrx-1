@@ -1,6 +1,7 @@
 import {createReducer, on} from '@ngrx/store';
-import {initialState} from '../../../store/state';
 import {TodoActions} from './todo.action';
+import {initialState, TodoState} from '../../../store/state';
+import {TodoItem} from '../entity/todo.interface';
 
 export const TodoReducer =
   createReducer(
@@ -11,7 +12,11 @@ export const TodoReducer =
     ),
     on(
       TodoActions.postResponse,
-      (state, {body}) => ({...state, body})
+      (state: TodoState, {body}) => {
+        const updatedBody: any = [...state.list];
+        updatedBody.push(body);
+        return {...state, list: updatedBody}
+      }
     ),
     on(
       TodoActions.putResponse,

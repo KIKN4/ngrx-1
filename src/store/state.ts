@@ -1,12 +1,7 @@
-import {Todo} from '../app/todos/entity/todo.interface';
-import {TodoReducer} from '../app/todos/todo-state/todo.reducer';
+export interface TodoState {
+  list: [];
+}
 
-
-export const initialState: IState = {
+export const initialState: TodoState = {
   list: []
 }
-
-export interface IState {
-  list: Todo[] | []
-}
-

@@ -1,10 +1,12 @@
-import {IState} from '../../../store/state';
+// Select the entire feature state
 import {createFeatureSelector, createSelector, MemoizedSelector} from '@ngrx/store';
+import {TodoState} from '../../../store/state';
 
+export const todoState: MemoizedSelector<any, any> = createFeatureSelector<TodoState>('todos');
 
-export const todoState: MemoizedSelector<any, any> = createFeatureSelector<IState>('todos');
-
-export const todoSelector =
-  createSelector(todoState, (state: IState) => state.list)
-
+// Select the list property from the state
+export const todoSelector = createSelector(
+  todoState,
+  (state: TodoState) => state
+);
 

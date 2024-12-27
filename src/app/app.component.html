@@ -24,3 +24,8 @@
   <button type="button" (click)="handleOperation(ActionModel.PUT)">PUT</button>
 </form>
 
+
+<button (click)="get()">get</button>
+
+
+{{todos$ | async | json}}
