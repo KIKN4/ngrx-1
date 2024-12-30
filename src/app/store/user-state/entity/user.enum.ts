@@ -1,0 +1,10 @@
+export enum userEnum {
+  GET_USERS_REQUEST = '[GET REQUEST] Users',
+  GET_USERS_RESPONSE = '[GET RESPONSE] Users',
+  GET_USER_REQUEST = '[GET REQUEST] Users/Id',
+  GET_USER_SUCCESS = '[GET REQUEST] Users/Id/Success',
+  GET_USER_POSTS_REQUEST = '[GET REQUEST] User/Posts',
+  GET_USER_POSTS_RESPONSE = '[GET RESPONSE] User/Posts',
+}
+
+

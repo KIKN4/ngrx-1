@@ -1,0 +1,5 @@
+<div class="container">
+  <ng-container *ngIf="user$ | async as user">
+    <user-card [user]="user"></user-card>
+  </ng-container>
+</div>

@@ -1,0 +1,20 @@
+@if (!post){
+  <app-loader-component id="loader"></app-loader-component>
+} @else {
+  <div class="container mt-4 w-50">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Post {{ post?.id }}</h5>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title text-center">{{ post?.title }}</h3>
+        <p class="card-text">
+          {{ post?.body }}
+        </p>
+        <a (click)="navigateUserDetail(post?.userId)" class="btn btn-secondary mt-auto text-center">
+          View User
+        </a>
+      </div>
+    </div>
+  </div>
+}

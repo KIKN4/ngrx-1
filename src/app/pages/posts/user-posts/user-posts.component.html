@@ -1,0 +1,17 @@
+<div class="container">
+  @if (user$ | async; as user) {
+    <user-card [user]="user"></user-card>
+  }
+
+  <div class="row text-center">
+    <div class="col">
+      <div class="row">
+        @for (post of posts$| async; track post.userId) {
+          <div class="container-cards">
+            <post-card [post]="post" (navigateToPostPreview)="navigate($event)"></post-card>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

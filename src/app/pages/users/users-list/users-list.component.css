@@ -1,0 +1,21 @@
+.container {
+  margin-top: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-bottom: 2rem;
+}
+
+.row {
+  justify-content: center;
+  margin-top: 1.5rem;
+  gap: 15px;
+}
+
+.row > * {
+  width: auto;
+}
